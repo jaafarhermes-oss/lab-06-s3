@@ -168,7 +168,7 @@ For example, this URL points to a public file in the course bucket: [https://ds2
 
 Create `stage_books.py` in `src/s3_lab/` (the package directory created by `uv init --name "s3_lab"`).
 
-**Start from the class examples.** Read through the numbered scripts in [class/06-s3](https://github.com/ksiller/DS2022/tree/main/class/06-s3), in particular [`01-make-bucket.py`](https://github.com/ksiller/DS2022/blob/main/class/06-s3/01-make-bucket.py) (create a bucket in `us-east-1`) and [`04-upload-object.py`](https://github.com/ksiller/DS2022/blob/main/class/06-s3/04-upload-object.py) (upload a file with a content type). They show the logger setup, the S3 client, and `try`/`except` blocks with `botocore.exceptions.ClientError` that you should reuse. Do not copy the client from `03-download-object.py`: it is an anonymous client that can only read public objects, so every upload would fail.
+**Start from the class examples.** Read through the numbered scripts in [class/06-s3](https://github.com/ksiller/DS2022/tree/main/class/06-s3), in particular `[01-make-bucket.py](https://github.com/ksiller/DS2022/blob/main/class/06-s3/01-make-bucket.py)` (create a bucket in `us-east-1`) and `[04-upload-object.py](https://github.com/ksiller/DS2022/blob/main/class/06-s3/04-upload-object.py)` (upload a file with a content type). They show the logger setup, the S3 client, and `try`/`except` blocks with `botocore.exceptions.ClientError` that you should reuse. Do not copy the client from `03-download-object.py`: it is an anonymous client that can only read public objects, so every upload would fail.
 
 Each class script performs a single step. Your script combines these steps into functions, structured as in Labs 03–05 (shebang, docstrings, comments, and a `main()` function called from an `if __name__ == "__main__":` block). The script should:
 
@@ -185,7 +185,7 @@ Each class script performs a single step. Your script combines these steps into 
   - `parse_args()`
     - **Arguments:** none; it reads the command line.
     - **Returns:** a tuple `(list_file, index_path, bucket)` of three strings.
-    - **Inside:** read the three arguments from `sys.argv` (`sys.argv[1]`, `sys.argv[2]`, `sys.argv[3]`). If fewer than three are given, log a usage message and `sys.exit(1)`. *Optional:* use [`argparse`](https://docs.python.org/3/library/argparse.html) instead, which generates the usage message and `--help` text for you.
+    - **Inside:** read the three arguments from `sys.argv` (`sys.argv[1]`, `sys.argv[2]`, `sys.argv[3]`). If fewer than three are given, log a usage message and `sys.exit(1)`. *Optional:* use `[argparse](https://docs.python.org/3/library/argparse.html)` instead, which generates the usage message and `--help` text for you.
   - `download_books(list_file, dest_dir)`
     - **Arguments:** `list_file`, the path of the book list (`book_urls.txt`); `dest_dir`, the folder to save the books in (use `"books"`).
     - **Returns:** a list of the local paths of the books, e.g. `["books/pg11.txt", "books/pg12.txt", ...]`. You pass this list to `upload_files`.
